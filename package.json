@@ -1,0 +1,36 @@
+{
+  "name": "job-application-tracker",
+  "version": "1.0.0",
+  "description": "job application tracker",
+  "keywords": [
+    "job",
+    "application"
+  ],
+  "homepage": "https://github.com/git-shubham-side/Job-Application-Tracker#readme",
+  "bugs": {
+    "url": "https://github.com/git-shubham-side/Job-Application-Tracker/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/git-shubham-side/Job-Application-Tracker.git"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "license": "ISC",
+  "author": "Shubham Rathod",
+  "type": "commonjs",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.4.2",
+    "ejs": "^6.0.1",
+    "expres": "^0.0.5",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.7.2",
+    "nodemon": "^3.1.14",
+    "twilio": "^6.0.2"
+  }
+}

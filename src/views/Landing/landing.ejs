@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JobDeck - Empower Your Job Search</title>
+    <link rel="stylesheet" href="/Landing/landing.css" />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <main class="landing-card">
+        <!-- Logo & Brand -->
+        <div class="brand-header">
+          <div class="logo-icon">
+            <i data-lucide="building-2"></i>
+          </div>
+          <h2>JobDeck</h2>
+        </div>
+
+        <!-- Hero Text -->
+        <div class="hero-section">
+          <h1>Empower Your Job Search</h1>
+          <p>
+            The all-in-one tracker, search engine, and application manager for
+            students.
+          </p>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="features-grid">
+          <div class="feature-box">
+            <div class="feature-icon-wrapper">
+              <i data-lucide="search" class="feature-icon"></i>
+            </div>
+            <div class="feature-text">
+              <h3>Discover Jobs</h3>
+              <p>Find tailored opportunities for students</p>
+            </div>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-wrapper">
+              <i data-lucide="file-text" class="feature-icon"></i>
+            </div>
+            <div class="feature-text">
+              <h3>Easy Apply</h3>
+              <p>Streamline your applications and documents</p>
+            </div>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-wrapper">
+              <i data-lucide="clipboard-check" class="feature-icon"></i>
+            </div>
+            <div class="feature-text">
+              <h3>Track Progress</h3>
+              <p>Follow applications from start to finish</p>
+            </div>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-wrapper">
+              <i data-lucide="user-circle" class="feature-icon"></i>
+            </div>
+            <div class="feature-text">
+              <h3>Build Profiles</h3>
+              <p>Manage your resume, skills, and portfolio</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <button
+          class="cta-button"
+          id="get-started-btn"
+          onclick="redirectPage()"
+        >
+          Get Started for Free
+        </button>
+
+        <p class="login-prompt">
+          Already have an account? <a href="/api/v1/login">Log in</a>
+        </p>
+      </main>
+
+      <!-- Footer -->
+      <footer class="page-footer">
+        <div class="footer-links">
+          <a href="#">Features</a>
+          <a href="#">Pricing</a>
+          <a href="#">Resources</a>
+        </div>
+        <p class="copyright">&copy; 2026 JobDeck. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script src="/Landing/landing.js"></script>
+  </body>
+</html>

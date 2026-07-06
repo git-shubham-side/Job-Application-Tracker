@@ -1,0 +1,18 @@
+Completed:-----------
+SCHEMA DESIGN PENGING - USER SCHEMA *
+
+
+
+
+
+
+
+
+
+
+Pending-------------
+Twilo message Sevice for otp Verifcation
+Jwt Implementation
+Flash Messages for login 
+
+
