@@ -4,17 +4,23 @@ const dotenv = require("dotenv").config();
 const path = require("path");
 const User = require("./models/User");
 const session = require("express-session");
+app.use(express.static(path.join(__dirname, "public")));
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
+//Controllers -> Signup/Register
 const {
   registerPostController,
   registerGetController,
 } = require("./controllers/registerController");
 
-app.use(express.static(path.join(__dirname, "public")));
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+//Controllers -> Login
+const {
+  loginGetController,
+  loginPostController,
+} = require("./controllers/loginController");
 
-//Session
+//SESSION Setup
 app.use(
   session({
     secret: process.env.SESSION_KEY,
@@ -36,18 +42,15 @@ app.get(["/api/v1/landing", "/"], (req, res) => {
 });
 
 //Login Route
-app.get("/api/v1/login", (req, res) => {
-  res.render("Login/login");
-});
-app.post("/api/v1/login", (req, res) => {
-  console.log(req.body);
-});
+app.get("/api/v1/login", loginGetController);
+app.post("/api/v1/login", loginPostController);
 
 //Dasbhoard
 //GET : /api/v1/dashboard
-app.get("/api/v1/dashboard", (req, res) => {
-  console.log("From app.js Dashboard Render: request Object--->", req);
-  res.render("Dashboard/dashboard");
+app.get("/api/v1/dashboard", async (req, res) => {
+  let idx = req.session.userId;
+  const user = await User.findById({ _id: idx });
+  res.render("Dashboard/dashboard", { user });
 });
 
 //Signup Routes:
@@ -55,6 +58,17 @@ app.get("/api/v1/dashboard", (req, res) => {
 app.get("/api/v1/signup", registerGetController);
 // POST : /api/v1/signup
 app.post("/api/v1/signup", registerPostController);
+
+//Logout Routes
+app.post("/api/v1/logout", (req, res, next) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.clearCookie("connect.sid"); // Session cookie remove
+    res.redirect("/api/v1/login");
+  });
+});
 
 app.use(errorhandler);
 
