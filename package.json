@@ -24,6 +24,7 @@
   "main": "server.js",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "connect-flash": "^0.1.1",
     "dotenv": "^17.4.2",
     "ejs": "^6.0.1",
     "expres": "^0.0.5",
