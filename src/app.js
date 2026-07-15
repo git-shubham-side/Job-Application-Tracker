@@ -5,6 +5,7 @@ const path = require("path");
 const User = require("./models/User");
 const session = require("express-session");
 const flash = require("connect-flash");
+const MongoStore = require("connect-mongo").default;
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -27,6 +28,13 @@ app.use(
     secret: process.env.SESSION_KEY,
     resave: false,
     saveUninitialized: false,
+
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URI,
+      collectionName: "JobDeck_sessions",
+      ttl: 24 * 60 * 60,
+      autoRemove: "native",
+    }),
   }),
 );
 
@@ -44,6 +52,7 @@ app.use(express.json());
 
 //Error Handler -- Middleware
 const errorhandler = require("./middlewares/errorHandler");
+const { compareSync } = require("bcrypt");
 
 // Request Handling
 app.get(["/api/v1/landing", "/"], (req, res) => {
