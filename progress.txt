@@ -7,6 +7,8 @@ Login Controller *
 Session Created for Signup and strored the id into the session *
 Flash Message Implementation Done Just send the type now * Flash Messages for login  -- Uses Session *
 -- Code : 7788899 -- register Controller apply flash message *
+isAuthenticated Middleware hooked on Dashboard *
+
 
 
 
