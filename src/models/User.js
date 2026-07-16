@@ -5,13 +5,22 @@ const bcrypt = require("bcrypt");
 
 connect();
 
+//Function to set the first letter in capital letter
+function capitalizeName(value) {
+  return value
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
 const UserSchema = mongoose.Schema(
   {
     firstName: {
       type: String,
       required: [true, "Please enter first name"],
+      set: capitalizeName,
       trim: true,
-      lowercase: true,
       uppercase: false,
       minlength: 2,
       maxlength: 50,
@@ -20,8 +29,8 @@ const UserSchema = mongoose.Schema(
     lastName: {
       type: String,
       required: [true, "Please enter last name"],
+      set: capitalizeName,
       trim: true,
-      lowercase: true,
       uppercase: false,
       minlength: 2,
       maxlength: 50,
