@@ -67,7 +67,7 @@ app.use(dashboardRoutes);
 
 //Logout Routes
 //POST : /api/v1/logout
-app.use(loginRoutes);
+app.use(logoutRoutes);
 
 //Server error Handler
 app.use(errorhandler);
