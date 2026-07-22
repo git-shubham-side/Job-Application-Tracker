@@ -37,9 +37,13 @@ Things which will be Non- Comment Later
 
 TO-DO ---
 
-Update the signup page and provide the option of signup as student of requireter 
-Update the schema accordingly
-create admin dashboard page
+Update the signup page and provide the option of signup as student of requireter -Complete
+Update the schema accordingly- Complete
+create admin dashboard page - Complete
+
+Create admin logiin 
+Create admin logout 
+
 
 
 

@@ -29,7 +29,8 @@ const adminSignupController = async function (req, res, next) {
       `Congratulations ${admin.fullName}, account created successfully!`,
     );
 
-    //Code : 77788990
+    // GET: /api/v1/admin/dashboard
+    req.session.admin = admin._id;
     res.redirect("/api/v1/admin/dashboard");
   } catch (err) {
     next(err);

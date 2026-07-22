@@ -10,6 +10,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+//ADMIN - Remove Later
+const Recuriter = require("./models/Recuriter");
+
 //Login Routes
 const loginRoutes = require("./routes/Login");
 //Signup Routes
@@ -73,18 +76,19 @@ app.get("/api/v1/signup/recruiter", (req, res) => {
 });
 app.post("/api/v1/signup/recruiter", adminSignupController);
 
-//Dasbhoard
+//Dasbhoard - Students
 //GET : /api/v1/dashboard
 app.use(dashboardRoutes);
 
-// Dashboard Admin
-// GET: /api/v1/signup/recuriter
-app.get("/api/v1/admin/dashboard", (req, res) => {
-  console.log("---------------", res.locals.success);
-  res.render("Admin-dashboard/admin-dashboard");
+// Dashboard - Admin
+// GET: /api/v1/admin/dashboard
+app.get("/api/v1/admin/dashboard", async (req, res) => {
+  const recuriter = await Recuriter.findById({ _id: req.session.admin });
+
+  res.render("Admin-dashboard/admin-dashboard", { recuriter });
 });
 
-//Logout Routes
+//Logout Routes for Students
 //POST : /api/v1/logout
 app.use(logoutRoutes);
 
